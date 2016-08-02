@@ -857,6 +857,10 @@ config TARGET_AST_G4
        bool "Support Aspeed fourth generation SoCs"
        select CPU_ARM926EJS
 
+config TARGET_MELLANOX_AST2500BMC
+       bool "Support Mellanox BMC (based on AST2500 SoC)"
+       select CPU_ARM1176
+
 endchoice
 
 source "arch/arm/mach-at91/Kconfig"
@@ -999,6 +1003,7 @@ source "board/woodburn/Kconfig"
 source "board/work-microwave/work_92105/Kconfig"
 source "board/zipitz2/Kconfig"
 source "board/aspeed/Kconfig"
+source "board/mellanox/Kconfig"
 
 source "arch/arm/Kconfig.debug"
 

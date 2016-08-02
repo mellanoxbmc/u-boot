@@ -11,6 +11,6 @@ config ASPEED_NET_PHY
 	bool "Use a direct attached PHY"
 
 config ASPEED_NET_NCSI
-	bool  "Use a network controller attached via NSCI"
+	bool  "Use a network controller attached via NCSI"
 
 endchoice
