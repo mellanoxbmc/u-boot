@@ -77,7 +77,7 @@
  */
 #define CONFIG_SYS_LONGHELP
 #define CONFIG_SYS_CBSIZE		256		/* Console I/O Buffer Size */
-#define CONFIG_SYS_PROMPT		"ast# "
+/*#define CONFIG_SYS_PROMPT		"ast# "*/
 
 /* Print Buffer Size */
 #define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + sizeof(CONFIG_SYS_PROMPT) + 16)
