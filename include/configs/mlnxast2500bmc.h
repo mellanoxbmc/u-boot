@@ -21,8 +21,8 @@
  * MA 02111-1307 USA
  */
 
-#ifndef __CONFIG_H
-#define __CONFIG_H
+#ifndef __MLNXAST2500BMC_CONFIG_H
+#define __MLNXAST2500BMC_CONFIG_H
 
 #define CONFIG_ARCH_ASPEED
 #define CONFIG_ARCH_AST2500
@@ -54,7 +54,7 @@
 /* ------------------------------------------------------------------------- */
 /* additions for new relocation code, must added to all boards */
 #define CONFIG_SYS_SDRAM_BASE		(AST_DRAM_BASE)
-#define CONFIG_SYS_INIT_RAM_ADDR	CONFIG_SYS_SDRAM_BASE /*(AST_SRAM_BASE)*/
+#define CONFIG_SYS_INIT_RAM_ADDR	CONFIG_SYS_SDRAM_BASE /*(AST_DRAM_BASE)*/
 #define CONFIG_SYS_INIT_RAM_SIZE	(32*1024)
 #define CONFIG_SYS_INIT_RAM_END		(CONFIG_SYS_INIT_RAM_ADDR + CONFIG_SYS_INIT_RAM_SIZE)
 #define CONFIG_SYS_INIT_SP_ADDR 	(CONFIG_SYS_INIT_RAM_END - GENERATED_GBL_DATA_SIZE)
@@ -65,8 +65,7 @@
 #define CONFIG_SYS_MEMTEST_END			(CONFIG_SYS_MEMTEST_START + (80*1024*1024))
 /*-----------------------------------------------------------------------*/
 
-#define CONFIG_SYS_TEXT_BASE            0
-#define CONFIG_SYS_UBOOT_BASE		CONFIG_SYS_TEXT_BASE
+#define CONFIG_SYS_TEXT_BASE            0x00000000
 /*
  * Memory Info
  */
@@ -104,7 +103,7 @@
  * Environment Config
  */
 #define CONFIG_BOOTDELAY	2
-#define CONFIG_BOOTFILE		"mlnxast2500bmc_image.bin"
+#define CONFIG_BOOTFILE		"uImage"
 
 /*
  * Miscellaneous configurable options
@@ -117,34 +116,29 @@
 #define CONFIG_SYS_MAXARGS	16		/* max number of command args */
 #define CONFIG_SYS_BARGSIZE	CONFIG_SYS_CBSIZE /* Boot Argument Buffer Size */
 
-#define CONFIG_SYS_LOAD_ADDR	0x83000000	/* default load address */
+#define CONFIG_BOOTARGS		"console=ttyS4,115200n8 root=/dev/ram rw"
 
-#define CONFIG_BOOTARGS		"console=ttyS4,115200n8 root=/dev/ram ro"
-
-/* ------------------------------------------------------------------------- */
 #define CONFIG_AST_SPI_NOR    /* AST SPI NOR Flash */
-
-#ifdef CONFIG_AST_SPI_NOR
-
 #define CONFIG_FMC_CS			1
 #define CONFIG_SYS_MAX_FLASH_BANKS 	(CONFIG_FMC_CS)
 #define CONFIG_SYS_MAX_FLASH_SECT	(8192)		/* max number of sectors on one chip */
 #define CONFIG_ENV_IS_IN_FLASH		1
 #define CONFIG_ENV_ADDR				(AST_FMC_CS0_BASE + 0x60000)
 
-#endif
+#define CONFIG_SYS_LOAD_ADDR    0x80000000  /* default load address */
 
-/* ------------------------------------------------------------------------- */
 #define CONFIG_ENV_OFFSET		0x60000	/* environment starts here  */
-#define CONFIG_ENV_SIZE			0x20000	/* Total Size of Environment Sector */
+#define CONFIG_ENV_SIZE			0x10000	/* Total Size of Environment Sector */
 
-#define CONFIG_BOOTCOMMAND	"bootm 20080000 20380000"
+#define CONFIG_BOOTCOMMAND	"bootm 0x20070000 0x20300000 0x202f0000"
 #define CONFIG_ENV_OVERWRITE
 
 #define AST2500_ENV_SETTINGS \
 	"verify=yes\0"	\
 	"spi_dma=yes\0" \
-	""
+	"ethaddr=00:C0:A8:12:34:56\0" \
+	"serverip=10.209.1.241\0"
+
 
 /* ------------------------------------------------------------------------- */
 
@@ -178,4 +172,4 @@
  */
 #define	CONFIG_DRAM_ECC_SIZE	0x10000000
 
-#endif	/* __CONFIG_H */
+#endif	/* __MLNXAST2500BMC_CONFIG_H */
