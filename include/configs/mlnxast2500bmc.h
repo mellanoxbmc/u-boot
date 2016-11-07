@@ -42,6 +42,8 @@
 
 #include <asm/arch/platform.h>
 
+#define CONFIG_BUILD_TARGET "u-boot-env.bin"
+
 /* Misc CPU related */
 #define CONFIG_CMDLINE_TAG		/* enable passing of ATAGs */
 #define CONFIG_SETUP_MEMORY_TAGS

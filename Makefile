@@ -927,6 +927,9 @@ u-boot.dis:	u-boot
 u-boot.cfg:	include/config.h FORCE
 	$(call if_changed,cpp_cfg)
 
+u-boot-env.bin: u-boot.bin
+	tools/mkenvimage -s $(CONFIG_ENV_SIZE) -o u-boot-env.bin $(srctree)/board/$(BOARDDIR)/u-boot-env.txt
+
 ifdef CONFIG_TPL
 SPL_PAYLOAD := tpl/u-boot-with-tpl.bin
 else
@@ -1470,6 +1473,7 @@ distclean: mrproper
 		-o -name '*.pyc' \) \
 		-type f -print | xargs rm -f
 	@rm -f boards.cfg
+	@rm -f u-boot-env.bin
 
 backup:
 	F=`basename $(srctree)` ; cd .. ; \
