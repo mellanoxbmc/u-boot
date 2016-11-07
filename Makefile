@@ -1470,6 +1470,7 @@ distclean: mrproper
 		-o -name '*.pyc' \) \
 		-type f -print | xargs rm -f
 	@rm -f boards.cfg
+	@rm -f u-boot-env.bin
 
 backup:
 	F=`basename $(srctree)` ; cd .. ; \
@@ -1614,6 +1615,9 @@ ifneq ($(cmd_files),)
 endif
 
 endif	# skip-makefile
+
+u-boot-env.bin: tools/mkenvimage
+	tools/mkenvimage -s $(CONFIG_ENV_SIZE) -o u-boot-env.bin $(srctree)/board/$(BOARDDIR)/u-boot-env.txt
 
 PHONY += FORCE
 FORCE:
