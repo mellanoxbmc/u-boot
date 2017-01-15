@@ -734,7 +734,7 @@ static int flash_read_buf (int dev, int fd, void *buf, size_t count,
 		lseek (fd, blockstart + block_seek, SEEK_SET);
 
 		rc = read (fd, buf + processed, readlen);
-		if (rc != readlen) {
+		if (rc < 0) {
 			fprintf (stderr, "Read error on %s: %s\n",
 				 DEVNAME (dev), strerror (errno));
 			return -1;
