@@ -49,7 +49,8 @@
 #define CONFIG_SETUP_MEMORY_TAGS
 #define CONFIG_INITRD_TAG
 
-#define CONFIG_CMDLINE_EDITING		1	/* command line history */
+#define CONFIG_CMDLINE_EDITING	/* command line history */
+#define CONFIG_AUTO_COMPLETE
 
 /* Enable cache controller */
 #define CONFIG_SYS_DCACHE_OFF	1
@@ -63,8 +64,10 @@
 
 #define CONFIG_NR_DRAM_BANKS		1
 
-#define CONFIG_SYS_MEMTEST_START		CONFIG_SYS_SDRAM_BASE + 0x300000
-#define CONFIG_SYS_MEMTEST_END			(CONFIG_SYS_MEMTEST_START + (80*1024*1024))
+#define CONFIG_SYS_MEMTEST_START		CONFIG_SYS_SDRAM_BASE
+#define CONFIG_SYS_MEMTEST_END		(CONFIG_SYS_MEMTEST_START + (128 * 1024 * 1024))
+#define CONFIG_SYS_ALT_MEMTEST
+
 /*-----------------------------------------------------------------------*/
 
 #define CONFIG_SYS_TEXT_BASE            0x00000000
