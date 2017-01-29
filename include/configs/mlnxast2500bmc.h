@@ -38,8 +38,6 @@
 #define CONFIG_ARCH_CPU_INIT
 #define CONFIG_MACH_TYPE		MACH_TYPE_ASPEED
 
-#define CONFIG_ASPEEDNIC
-
 #include <asm/arch/platform.h>
 
 #define CONFIG_BUILD_TARGET "u-boot-env.bin"
@@ -148,20 +146,7 @@
 /* ------------------------------------------------------------------------- */
 
 /* Ethernet */
-#ifdef CONFIG_CMD_MII
-#define CONFIG_MII			1
-#define CONFIG_PHY_GIGE
-#define CONFIG_PHYLIB
-#define CONFIG_PHY_ADDR			0
-#define CONFIG_PHY_REALTEK
-#endif
-#ifdef CONFIG_CMD_NET
-#define CONFIG_FTGMAC100
-#define CONFIG_PHY_MAX_ADDR	32	/* this comes from <linux/phy.h> */
-#define CONFIG_FTGMAC100_EGIGA
-
-
-#endif
+#define CONFIG_ASPEEDNIC
 
 /* -------------------------------------------------------------------------
  * 1. DRAM Speed

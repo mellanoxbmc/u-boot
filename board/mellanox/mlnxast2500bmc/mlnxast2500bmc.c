@@ -66,9 +66,9 @@ int dram_init(void)
 	return 0;
 }
 
-#ifdef CONFIG_CMD_NET
+#ifdef CONFIG_ASPEEDNIC
 int board_eth_init(bd_t *bd)
 {
-        return ftgmac100_initialize(bd);
+        return aspeednic_initialize(bd);
 }
 #endif
