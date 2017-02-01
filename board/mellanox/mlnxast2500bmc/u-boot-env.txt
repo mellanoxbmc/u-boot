@@ -1,10 +1,10 @@
 baudrate=115200
-bootargs=console=ttyS4,115200n8                                      
-bootcmd=bootm 0x20070000 0x20300000 0x202f0000                      
-bootdelay=2
+bootargs=console=ttyS4,115200n8                       
+bootcmd=bootm 0x20070000 0x20300000 0x202f0000
+bootdelay=5
 ethact=FTGMAC100#0
-spi_dma=yes                                                          
-stderr=serial                                                        
+spi_dma=yes                                                        
+stderr=serial                                      
 stdin=serial                                                         
 stdout=serial
 verify=yes

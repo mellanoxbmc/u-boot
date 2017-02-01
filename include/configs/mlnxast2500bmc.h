@@ -105,7 +105,6 @@
 /*
  * Environment Config
  */
-#define CONFIG_BOOTDELAY	2
 #define CONFIG_BOOTFILE		"uImage"
 
 /*
@@ -126,12 +125,12 @@
 #define CONFIG_SYS_MAX_FLASH_BANKS 	(CONFIG_FMC_CS)
 #define CONFIG_SYS_MAX_FLASH_SECT	(8192)		/* max number of sectors on one chip */
 #define CONFIG_ENV_IS_IN_FLASH		1
-#define CONFIG_ENV_ADDR				(AST_FMC_CS0_BASE + 0x60000)
+#define CONFIG_ENV_ADDR			(AST_FMC_CS0_BASE + 0x60000)
 
 #define CONFIG_SYS_LOAD_ADDR    0x80000000  /* default load address */
 
-#define CONFIG_ENV_OFFSET		0x60000	/* environment starts here  */
-#define CONFIG_ENV_SIZE			0x10000	/* Total Size of Environment Sector */
+#define CONFIG_ENV_OFFSET	0x60000	/* environment starts here  */
+#define CONFIG_ENV_SIZE		0x10000	/* Total Size of Environment Sector */
 
 #define CONFIG_BOOTCOMMAND	"bootm 0x20070000 0x20300000 0x202f0000"
 #define CONFIG_ENV_OVERWRITE
