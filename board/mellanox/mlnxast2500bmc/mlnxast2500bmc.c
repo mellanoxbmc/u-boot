@@ -72,3 +72,20 @@ int board_eth_init(bd_t *bd)
         return aspeednic_initialize(bd);
 }
 #endif
+
+/*
+ * Called by macro WATCHDOG_RESET
+ */
+#if defined(CONFIG_HW_WATCHDOG)
+
+#define AST_BASE_WD		0x1E785000 /* Watch DOG */
+
+void hw_watchdog_reset (void)
+{
+    u32 reg=0;
+	/*restart WD2 timer*/
+    reg = 0x4755;
+    writel(reg, AST_BASE_WD | 0x28);
+}
+
+#endif /* CONFIG_WATCHDOG */
