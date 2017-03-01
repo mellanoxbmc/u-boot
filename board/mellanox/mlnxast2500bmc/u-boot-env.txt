@@ -11,3 +11,4 @@ verify=yes
 serverip=10.209.1.241
 gatewayip=10.209.0.1
 netmask=255.255.254.0
+recovery_mode=mw 0x1e785024 0x00
